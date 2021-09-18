@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+use strict;
+
+
+
+sub on_user_command {
+  my ($self, $cmd) = @_;
+  if ($cmd eq "cppst:activate") {
+    my $term = $self->{term};
+    my ($row, $col) = $term->screen_cur(); 
+    $term->tt_write($term->locale_encode($term->line($row-1)->t));
+  }
+}
